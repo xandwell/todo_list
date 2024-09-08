@@ -10,7 +10,10 @@ class TaskController extends Controller
 {
     public function index()
     {
-        $tasks = Task::where('user_id', Auth::id())->orderBy('id', 'desc')->get();
+        $tasks = Task::where('user_id', Auth::id())
+                     ->orderBy('created_at', 'asc')
+                     ->get();
+
         return view('tasks.index', compact('tasks'));
     }
 
